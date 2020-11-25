@@ -1,0 +1,32 @@
+//
+// Created by Avinal on 23-11-2020.
+//
+
+#ifndef BASICPP_BASICPP_CONFIG_HPP
+#define BASICPP_BASICPP_CONFIG_HPP
+
+#define BASICPP_VERSION_MAJOR 0
+#define BASICPP_VERSION_MINOR 1
+#define BASICPP_VERSION_PATCH 1
+
+// Composing the version string from major, minor and patch
+#define BASICPP_CONCATENATE(A, B) BASICPP_CONCATENATE_IMPL(A, B)
+#define BASICPP_CONCATENATE_IMPL(A, B) A##B
+#define BASICPP_STRINGIFY(a) BASICPP_STRINGIFY_IMPL(a)
+#define BASICPP_STRINGIFY_IMPL(a) #a
+
+#define BASICPP_VERSION BASICPP_STRINGIFY(BASICPP_CONCATENATE(BASICPP_VERSION_MAJOR,   \
+                 BASICPP_CONCATENATE(.,BASICPP_CONCATENATE(BASICPP_VERSION_MINOR,   \
+                                  BASICPP_CONCATENATE(.,BASICPP_VERSION_PATCH)))))
+
+#ifdef _WIN32
+#ifdef BASICPP_EXPORTS
+#define BASICPP_API __declspec(dllexport)
+#else
+#define BASICPP_API __declspec(dllimport)
+#endif
+#else
+#define BASICPP_API
+#endif
+
+#endif //BASICPP_BASICPP_CONFIG_HPP
